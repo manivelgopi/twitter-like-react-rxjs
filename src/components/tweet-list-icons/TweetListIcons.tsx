@@ -3,28 +3,9 @@ import { faChartColumn, faRetweet } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { TweetMesgIcons } from '../../types-interfaces/types';
 import IconButton from '../button/IconButton';
-import TweetLikeIcons from './TweetLikeIcon';
+import TweetHeartIcon from './TweetHeartIcon';
 
 export default function TweetListIcons(tweetMessageIcon: TweetMesgIcons) {
-
-    // const dispatch = useAppDispatch();
-    // const [tweetMessageIcon] = useState(tweetMessageIconData)
-
-    // const handleLike = useCallback((id: number | undefined) => {
-    //     if (id) {
-    //         console.log(id);
-    //         dispatch(likeUpdate(id));
-    //         if (tweetMessageIcon.isLiked) {
-    //             setTweetMessageIcon({ ...tweetMessageIcon, isLiked: false })
-    //         } else {
-    //             setTweetMessageIcon({ ...tweetMessageIcon, isLiked: true })
-    //         }
-    //     }
-    // }, [dispatch, tweetMessageIcon])
-
-    // useEffect(() => {
-    //     setTweetMessageIcon(tweetMessageIconData)
-    // }, [tweetMessageIconData])
 
     return (
         <>
@@ -42,22 +23,11 @@ export default function TweetListIcons(tweetMessageIcon: TweetMesgIcons) {
                         </IconButton>
                         <span className="tweet-msg-icons-count">{tweetMessageIcon.retweetCount}</span>
                     </div>
-                    <TweetLikeIcons likedCount={tweetMessageIcon.likedCount} id={tweetMessageIcon.id} isLiked={tweetMessageIcon.isLiked}></TweetLikeIcons>
-                    {/* <div className="tweet-msg-icons tweet-icon-heart">
-                        <IconButton onClick={() => {
-                            if (tweetMessageIcon.id) { dispatch(likeUpdate(tweetMessageIcon.id)); }
-                            tweetMessageIcon.isLiked ?
-                                setTweetMessageIcon({ ...tweetMessageIcon, isLiked: false })
-                                :
-                                setTweetMessageIcon({ ...tweetMessageIcon, isLiked: true })
-                        }
-                        }
-                            type='button'
-                            className={`tweet-msg-icon ${tweetMessageIcon.isLiked ? "liked-icon" : ""}`}>
-                            <FontAwesomeIcon icon={tweetMessageIcon.isLiked ? LikedIcon : notLikedIcon} size='lg' />
-                        </IconButton>
-                        <span className="tweet-msg-icons-count">{tweetMessageIcon.isLiked ? 1 : ""}</span>
-                    </div> */}
+                    <TweetHeartIcon
+                        likedCount={tweetMessageIcon.likedCount}
+                        id={tweetMessageIcon.id}
+                        isLiked={tweetMessageIcon.isLiked} />
+
                     <div className="tweet-msg-icons tweet-icon-chart">
                         <IconButton type='button' className='tweet-msg-icon'>
                             <FontAwesomeIcon icon={faChartColumn} size='lg' />

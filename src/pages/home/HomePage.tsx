@@ -11,25 +11,6 @@ import './HomePage.scss';
 
 export default function Home() {
 
-
-    // const following = () => {
-    //     refreshTweetList()
-    // }
-
-    // function getAllTweet() {
-    //     try {
-    //         tweets.subscribe(tweet => {
-    //             dispatch(addTweet(tweet));
-    //         })
-    //     }
-    //     catch (err: any) {
-    //         throw new Error(err);
-    //     }
-    // }
-
-
-
-
     return (
         <>
             <div className='main-wrapper'>
@@ -37,12 +18,14 @@ export default function Home() {
 
                     {/* Tweet contanier with compose and tweets list */}
                     <div className='tweet-container'>
-                        {Date.now()}
+
                         {/* Tweet page top Header and nav button */}
                         <TweetHomeHeader />
 
+                        {Date.now()}
                         {/* Tweet compose form */}
                         <TweetCompose />
+
 
                         {/* Tweet message lists */}
                         <TweetListContainer />

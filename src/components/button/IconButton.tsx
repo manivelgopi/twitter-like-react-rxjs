@@ -4,7 +4,7 @@ import './Button.scss';
 interface IconButtonProbs {
     type: "button" | "submit" | "reset";
     style?: CSSProperties | undefined;
-    onClick?: () => void;
+    onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
     otherProps?: any[];
     className?: string;
     children: JSX.Element;

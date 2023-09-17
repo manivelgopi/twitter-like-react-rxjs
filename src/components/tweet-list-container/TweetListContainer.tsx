@@ -2,35 +2,70 @@ import { faCheck, faEllipsis, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useCallback, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { tweets } from '../../DataSource';
 import TextButton from '../../components/button/TextButton';
 import { dateTimeDifferenc } from '../../controller/utilities';
-import { useAppSelector } from '../../custom-hooks/hooks';
-import { tweetsList } from '../../store/TweetListSlice';
+// import { TweetListSelector } from '../../store/TweetListSelector';
+import {
+    // TweetListSelector, 
+    useAppDispatch, useAppSelector
+} from '../../custom-hooks/hooks';
+import { removeOldTweets, saveTweet } from '../../store/TweetListSlice';
 import { TweetItem } from '../../types-interfaces/types';
 import IconButton from '../button/IconButton';
 import TweetListIcons from '../tweet-list-icons/TweetListIcons';
 
 export default function TweetListContainer() {
-    const tweetsListUpdated = useAppSelector(tweetsList);
+    const dispatch = useAppDispatch();
+    const tweetsListUpdated = useAppSelector((state) => state.twitter.tweetsList);
+    // const [tweetsListUpdated, setTweetsListUpdated] = useState<TweetItem[]>(TweetListSelector);
+
     const [displayedTweet, setDisplayTweet] = useState<TweetItem[]>([]);
     const [newTweetCount, setNewTweetCount] = useState<number>(0);
 
     const refreshTweetList = () => {
+        // dispatch(removeOldTweets)
         setDisplayTweet(tweetsListUpdated);
         setNewTweetCount(0);
     };
 
-    useEffect(() => {
-        function newTweet() {
-            setNewTweetCount(tweetsListUpdated.length - displayedTweet.length)
-        }
-        newTweet();
-        console.log("tweetsListUpdated", tweetsListUpdated);
+    // loading Datasource
+    const getDatasource = useCallback(() => {
+        try {
+            tweets.subscribe((tweet) => {
+                console.log("usecallback", tweet);
+                // (tweet as any);
+                dispatch(saveTweet(
+                    {
+                        account: tweet.account,
+                        timestamp: tweet.timestamp,
+                        content: tweet.content,
+                        likedCount: 0,
+                        isLiked: false
+                    }
+                ))
+                console.log("df", tweetsListUpdated);
 
-    }, [tweetsListUpdated, displayedTweet])
+            });
+
+        } catch (error) {
+            throw new Error("Something went wrong!");
+        }
+    }, [dispatch, tweetsListUpdated]);
+    // getDatasource();
+
+    useEffect(() => {
+        getDatasource();
+    }, []);
+
+    useEffect(() => {
+        setNewTweetCount(tweetsListUpdated.length - displayedTweet.length);
+    }, [displayedTweet, tweetsListUpdated]);
+
 
     return (
         <>
+
             {/* Refresh to show new Tweets */}
             {newTweetCount > 0 &&
                 <div className='tweet-list-refresh-container'>
@@ -42,12 +77,13 @@ export default function TweetListContainer() {
                 </div>}
 
             <div className='tweet-list-container'>
+                {displayedTweet.length === 0 && newTweetCount === 0 &&
+                    <div><br />
+                        you’re all caught up !</div>
+                }
                 {displayedTweet && displayedTweet.slice(0).reverse().map((tweet, index) => {
-                    console.log("update", tweet);
-
                     return (
-                        <div key={index} className='tweet-message-card'>
-                            {Date.now()}
+                        <div key={index} className='tweet-message-card'>{Date.now()}
                             <div className='tweet-profile-icon'>
                                 <IconButton type='button' className='bg-grey btn-icon-sm' >
                                     <FontAwesomeIcon icon={faUser} size='2xl' />
@@ -62,11 +98,10 @@ export default function TweetListContainer() {
                                             {tweet.isVerified && <span><FontAwesomeIcon className='text-primary' icon={faCheck} /></span>}
                                         </Link>
                                         <Link className='tweet-owner-username'
-                                            to={`/profile/${tweet.account}`}>
+                                            to='#'>
                                             <span>@{tweet.account}</span>
                                         </Link>
                                         <Link className='tweet-message-date'
-                                            // to={`/profile/${user.username}`}
                                             to="#"
                                         >
                                             <span>. {dateTimeDifferenc(tweet.timestamp)}</span>
@@ -93,10 +128,7 @@ export default function TweetListContainer() {
                         </div>
                     )
                 })
-
                 }
-
-
             </div>
         </>
     )

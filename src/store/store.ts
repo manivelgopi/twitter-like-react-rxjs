@@ -1,11 +1,13 @@
-import { Action, ThunkAction, configureStore } from '@reduxjs/toolkit';
-// import counterReducer from '../features/counter/counterSlice';
+import { configureStore } from '@reduxjs/toolkit';
+import { RemoveOldTweetsMiddleware } from './RemoveOldTweetsMiddleware';
 import twitterReducer from './TweetListSlice';
 
 export const store = configureStore({
   reducer: {
     twitter: twitterReducer,
   },
+  // middleware: (getDefaultMiddleware) =>
+  //   getDefaultMiddleware().concat(RemoveOldTweetsMiddleware),
   devTools: process.env.NODE_ENV !== 'production',
 });
 
