@@ -1,15 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import TextButton from '../../components/button/TextButton';
 
 export default function TweetHomeHeader() {
+    const [isAllTweet, setAllTweet] = useState(true);
+
     const forYou = () => {
-        console.log("for you");
-
+        setAllTweet(true)
     }
-    const following = () => {
-        console.log("following");
-
+    const likedTweet = () => {
+        setAllTweet(false)
     }
     return (
         <>
@@ -17,16 +17,14 @@ export default function TweetHomeHeader() {
             <div className='tweet-container-header'>
                 <h2 className='page-title heading-2'>Home</h2>
                 <div className='tweet-category-buttons'>
-                    <NavLink to='/' className="tweet-section-btn">
-                        <TextButton type='button' className='btn-block' onClick={() => forYou()}>
-                            For you
-                        </TextButton>
-                    </NavLink>
-                    <NavLink to='/follwing' className="tweet-section-btn">
-                        <TextButton type='button' className='btn-block' onClick={() => following()}>
-                            Following
-                        </TextButton>
-                    </NavLink>
+                    <TextButton type='button' className='btn-block' onClick={() => forYou()}>
+                        For you
+                    </TextButton>
+
+                    <TextButton type='button' className='btn-block' onClick={() => likedTweet()}>
+                        Following
+                    </TextButton>
+
                 </div>
             </div>
         </>

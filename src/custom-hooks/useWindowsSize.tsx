@@ -13,13 +13,11 @@ export default function useWindowsSize() {
     })
 
     useEffect(() => {
-
         function handleResize() {
             setWindowSize({
                 width: window.innerWidth,
                 height: window.innerHeight
             })
-            console.log(windowSize)
         }
 
         //resize event listener

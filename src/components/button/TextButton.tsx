@@ -7,7 +7,7 @@ interface TextButtonProbs {
     onClick?: () => void;
     otherProps?: any[];
     className?: string;
-    children: string;
+    children: string | number | any;
 }
 
 export default function TextButton(props: TextButtonProbs) {

@@ -10,9 +10,10 @@ const createTweetSource = (frequency: number, account: string, attribute: string
         content: `${attribute} Tweet number ${i + 1}`
     })));
 }
-const tweets = merge(
+export const tweets = merge(
     createTweetSource(5000, 'AwardsDarwin', 'Facepalm'),
     createTweetSource(3000, 'iamdevloper', 'Expert'),
     createTweetSource(5000, 'CommitStrip', 'Funny')
 );
-tweets.subscribe(console.log.bind(console));
+
+// tweets.subscribe(console.log.bind(console));

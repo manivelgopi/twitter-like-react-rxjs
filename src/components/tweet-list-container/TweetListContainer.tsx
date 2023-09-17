@@ -1,49 +1,53 @@
-import { faComment, faShareFromSquare, faHeart as notLikedIcon } from '@fortawesome/free-regular-svg-icons';
-import { faHeart as LikedIcon, faChartColumn, faCheck, faEllipsis, faRetweet, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faEllipsis, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import moment from 'moment';
+import { useCallback, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useAppDispatch } from '../../custom-hooks/hooks';
-import { likeUpdate } from '../../store/TweetListSlice';
-import { TweetItemListsProps } from '../../types-interfaces/types';
+import TextButton from '../../components/button/TextButton';
+import { dateTimeDifferenc } from '../../controller/utilities';
+import { useAppSelector } from '../../custom-hooks/hooks';
+import { tweetsList } from '../../store/TweetListSlice';
+import { TweetItem } from '../../types-interfaces/types';
 import IconButton from '../button/IconButton';
+import TweetListIcons from '../tweet-list-icons/TweetListIcons';
 
-export default function TweetListContainer({ tweetLists }: TweetItemListsProps) {
+export default function TweetListContainer() {
+    const tweetsListUpdated = useAppSelector(tweetsList);
+    const [displayedTweet, setDisplayTweet] = useState<TweetItem[]>([]);
+    const [newTweetCount, setNewTweetCount] = useState<number>(0);
 
-    moment.updateLocale('en', {
-        relativeTime: {
-            future: "in %s",
-            past: "%s ago",
-            s: "seconds",
-            m: "1 minute",
-            mm: "%d minutes",
-            h: "1 hour",
-            hh: "%d hours",
-            d: "1 day",
-            dd: "%d days",
-            M: "1 month",
-            MM: "%d months",
-            y: "1 year",
-            yy: "%d years"
+    const refreshTweetList = () => {
+        setDisplayTweet(tweetsListUpdated);
+        setNewTweetCount(0);
+    };
+
+    useEffect(() => {
+        function newTweet() {
+            setNewTweetCount(tweetsListUpdated.length - displayedTweet.length)
         }
-    });
-    let timeDirretent = (dateTimestamp: number): string => { return moment(dateTimestamp).fromNow() };
-    const dispatch = useAppDispatch();
+        newTweet();
+        console.log("tweetsListUpdated", tweetsListUpdated);
 
-    const handleLike = (index: number) => {
-        console.log("text", index);
-        dispatch(likeUpdate(index));
-    }
-
+    }, [tweetsListUpdated, displayedTweet])
 
     return (
         <>
+            {/* Refresh to show new Tweets */}
+            {newTweetCount > 0 &&
+                <div className='tweet-list-refresh-container'>
+                    <TextButton type='button'
+                        onClick={() => refreshTweetList()}
+                        className='text-primary btn-block'>
+                        Show {newTweetCount} post
+                    </TextButton>
+                </div>}
+
             <div className='tweet-list-container'>
-                {tweetLists && tweetLists.slice(0).reverse().map((tweet, index) => {
+                {displayedTweet && displayedTweet.slice(0).reverse().map((tweet, index) => {
                     console.log("update", tweet);
 
                     return (
                         <div key={index} className='tweet-message-card'>
+                            {Date.now()}
                             <div className='tweet-profile-icon'>
                                 <IconButton type='button' className='bg-grey btn-icon-sm' >
                                     <FontAwesomeIcon icon={faUser} size='2xl' />
@@ -65,7 +69,7 @@ export default function TweetListContainer({ tweetLists }: TweetItemListsProps) 
                                             // to={`/profile/${user.username}`}
                                             to="#"
                                         >
-                                            <span>. {timeDirretent(tweet.timestamp)}</span>
+                                            <span>. {dateTimeDifferenc(tweet.timestamp)}</span>
                                         </Link>
                                     </div>
                                     <div className='tweet-action-menu'>
@@ -76,42 +80,15 @@ export default function TweetListContainer({ tweetLists }: TweetItemListsProps) 
                                     <span className='tweet-msg-txt' >{tweet.content}</span>
 
                                 </div>
-                                <div className='tweet-like-share-icons'>
-                                    <div className="tweet-card-icons">
-                                        <div className="tweet-msg-icons tweet-icon-comment">
-                                            <IconButton type='button' className='tweet-msg-icon'>
-                                                <FontAwesomeIcon icon={faComment} size='lg' />
-                                            </IconButton>
-                                            <span className="tweet-msg-icons-count">{tweet.msgCount}</span>
-                                        </div>
-                                        <div className="tweet-msg-icons tweet-icon-retweet">
-                                            <IconButton type='button' className='tweet-msg-icon' >
-                                                <FontAwesomeIcon icon={faRetweet} size='lg' />
-                                            </IconButton>
-                                            <span className="tweet-msg-icons-count">{tweet.retweetCount}</span>
-                                        </div>
-                                        <div className="tweet-msg-icons tweet-icon-heart">
-                                            <IconButton onClick={() => handleLike(index)} type='button'
-                                                className={`tweet-msg-icon ${tweet.isLiked ? "liked-icon" : ""}`}>
-                                                <FontAwesomeIcon icon={tweet.isLiked ? LikedIcon : notLikedIcon} size='lg' />
-                                            </IconButton>
-                                            <span className="tweet-msg-icons-count">{tweet.likeCount}</span>
-                                        </div>
-                                        <div className="tweet-msg-icons tweet-icon-chart">
-                                            <IconButton type='button' className='tweet-msg-icon'>
-                                                <FontAwesomeIcon icon={faChartColumn} size='lg' />
-                                            </IconButton>
-                                            <span className="tweet-msg-icons-count">{tweet.viewCount}</span>
 
-                                        </div>
-                                        <div className="tweet-msg-icons tweet-icon-share">
-                                            <IconButton type='button' className='tweet-msg-icon'>
-                                                <FontAwesomeIcon icon={faShareFromSquare} size='lg' />
-                                            </IconButton>
-                                        </div>
-                                    </div>
-                                </div>
-
+                                <TweetListIcons
+                                    id={tweet.id}
+                                    isLiked={tweet.isLiked}
+                                    msgCount={tweet.msgCount}
+                                    retweetCount={tweet.retweetCount}
+                                    likedCount={tweet.likedCount}
+                                    viewCount={tweet.viewCount}
+                                ></TweetListIcons>
                             </div>
                         </div>
                     )

@@ -1,14 +1,20 @@
-export type TweetItem = {
+export interface LikedIcons {
+    isLiked?: boolean;
+    id?: number;
+    likedCount: number;
+}
+
+export interface TweetMesgIcons extends LikedIcons {
+    msgCount?: number;
+    retweetCount?: number;
+    viewCount?: number;
+    isVerified?: boolean;
+}
+
+export interface TweetItem extends TweetMesgIcons {
     account: string;
     timestamp: number;
     content: string;
-    id?: number;
-    isLiked?: boolean;
-    msgCount?: number;
-    retweetCount?: number;
-    likeCount?: number;
-    viewCount?: number;
-    isVerified?: boolean;
 }
 
 export type TweetItemListsProps = {

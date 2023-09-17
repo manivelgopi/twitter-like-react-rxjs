@@ -1,14 +1,15 @@
 import { faCalendarCheck, faFaceSmile, faFilm, faImage, faListCheck, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState } from 'react';
-import { useAppDispatch } from '../../custom-hooks/hooks';
-import { addTweet, tweets } from '../../store/TweetListSlice';
+import { useAppDispatch, useAppSelector } from '../../custom-hooks/hooks';
+import { addTweet, tweetsList } from '../../store/TweetListSlice';
 import Button from '../button/Button';
 import IconButton from '../button/IconButton';
 import TextArea from '../forms/Textarea';
 
 export default function TweetCompose() {
     const dispatch = useAppDispatch();
+    const tweetsListUpdated = useAppSelector(tweetsList);
 
     const [tweetComposeText, setTweetComposeText] = useState<string>('');
     const [isPostBtnDisabled, setIsPostBtnDisabled] = useState<boolean>(true);
@@ -27,8 +28,6 @@ export default function TweetCompose() {
     };
 
     const handlePostTweet = async () => {
-        console.log("running");
-
         if (tweetComposeText) {
             await dispatch(
                 addTweet(
@@ -36,8 +35,8 @@ export default function TweetCompose() {
                         account: "Manivel Gopi",
                         timestamp: Date.now(),
                         content: tweetComposeText,
-                        isVerified: true,
-                        id: tweets.length
+                        likedCount: 0,
+                        isLiked: false
                     }
                 ));
             setTweetComposeText('');

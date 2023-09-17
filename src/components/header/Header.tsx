@@ -7,8 +7,6 @@ import './MobileHeader.scss';
 
 export default function Header() {
     const { width: screenWidth } = useWindowsSize();
-    console.log(screenWidth);
-
     return (
         <>
             <header role="banner" className={`header ${screenWidth > 1266 ? "desktop" : "mobile"} `}>
