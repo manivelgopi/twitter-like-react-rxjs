@@ -31,11 +31,13 @@ export default function TweetCompose() {
             dispatch(
                 saveTweet(
                     {
+                        id: Date.now(),
                         account: "Manivel Gopi",
                         timestamp: Date.now(),
                         content: tweetComposeText,
                         likedCount: 0,
-                        isLiked: false
+                        isLiked: false,
+                        isVerified: true
                     }
                 ));
             setTweetComposeText('');

@@ -15,7 +15,7 @@ export default function TweetListIcons(tweetMessageIcon: TweetMesgIcons) {
                         <IconButton type='button' className='tweet-msg-icon'>
                             <FontAwesomeIcon icon={faComment} size='lg' />
                         </IconButton>
-                        <span className="tweet-msg-icons-count">{tweetMessageIcon.msgCount}</span>
+                        <span className="tweet-msg-icons-count">{tweetMessageIcon.msgCount} </span>
                     </div>
                     <div className="tweet-msg-icons tweet-icon-retweet">
                         <IconButton type='button' className='tweet-msg-icon' >

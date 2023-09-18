@@ -3,28 +3,28 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useCallback, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { tweets } from '../../DataSource';
-import TextButton from '../../components/button/TextButton';
 import { dateTimeDifferenc } from '../../controller/utilities';
+import TextButton from '../button/TextButton';
 // import { TweetListSelector } from '../../store/TweetListSelector';
 import {
     // TweetListSelector, 
     useAppDispatch, useAppSelector
 } from '../../custom-hooks/hooks';
-import { removeOldTweets, saveTweet } from '../../store/TweetListSlice';
+import { saveTweet } from '../../store/TweetListSlice';
 import { TweetItem } from '../../types-interfaces/types';
 import IconButton from '../button/IconButton';
 import TweetListIcons from '../tweet-list-icons/TweetListIcons';
 
-export default function TweetListContainer() {
+export default function TweetListContainerLocal() {
     const dispatch = useAppDispatch();
-    const tweetsListUpdated = useAppSelector((state) => state.twitter.tweetsList);
-    // const [tweetsListUpdated, setTweetsListUpdated] = useState<TweetItem[]>(TweetListSelector);
+    let tweetId: number = 0;
+    // const tweetsListUpdated = useAppSelector((state) => state.twitter.tweetsList);
+    const [tweetsListUpdated, setTweetsListUpdated] = useState<TweetItem[]>([]);
 
     const [displayedTweet, setDisplayTweet] = useState<TweetItem[]>([]);
     const [newTweetCount, setNewTweetCount] = useState<number>(0);
 
     const refreshTweetList = () => {
-        // dispatch(removeOldTweets)
         setDisplayTweet(tweetsListUpdated);
         setNewTweetCount(0);
     };
@@ -33,26 +33,29 @@ export default function TweetListContainer() {
     const getDatasource = useCallback(() => {
         try {
             tweets.subscribe((tweet) => {
-                console.log("usecallback", tweet);
-                // (tweet as any);
+
+                setTweetsListUpdated((prevTweetList) =>
+                    [...prevTweetList,
+                    {
+                        ...tweet,
+                        isLiked: false,
+                        likedCount: 0, id: tweetId + 1
+                    }]);
                 dispatch(saveTweet(
                     {
                         account: tweet.account,
                         timestamp: tweet.timestamp,
                         content: tweet.content,
                         likedCount: 0,
-                        isLiked: false
+                        isLiked: false,
+                        id: tweetId + 1
                     }
                 ))
-                console.log("df", tweetsListUpdated);
-
             });
-
         } catch (error) {
             throw new Error("Something went wrong!");
         }
-    }, [dispatch, tweetsListUpdated]);
-    // getDatasource();
+    }, [dispatch]);
 
     useEffect(() => {
         getDatasource();
@@ -65,7 +68,6 @@ export default function TweetListContainer() {
 
     return (
         <>
-
             {/* Refresh to show new Tweets */}
             {newTweetCount > 0 &&
                 <div className='tweet-list-refresh-container'>
@@ -74,6 +76,7 @@ export default function TweetListContainer() {
                         className='text-primary btn-block'>
                         Show {newTweetCount} post
                     </TextButton>
+
                 </div>}
 
             <div className='tweet-list-container'>
@@ -83,7 +86,7 @@ export default function TweetListContainer() {
                 }
                 {displayedTweet && displayedTweet.slice(0).reverse().map((tweet, index) => {
                     return (
-                        <div key={index} className='tweet-message-card'>{Date.now()}
+                        <div key={index} className='tweet-message-card'>
                             <div className='tweet-profile-icon'>
                                 <IconButton type='button' className='bg-grey btn-icon-sm' >
                                     <FontAwesomeIcon icon={faUser} size='2xl' />

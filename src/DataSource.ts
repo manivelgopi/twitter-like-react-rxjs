@@ -11,9 +11,9 @@ const createTweetSource = (frequency: number, account: string, attribute: string
     })));
 }
 export const tweets = merge(
-    createTweetSource(15000, 'AwardsDarwin', 'Facepalm'),
+    createTweetSource(5000, 'AwardsDarwin', 'Facepalm'),
     createTweetSource(13000, 'iamdevloper', 'Expert'),
-    createTweetSource(15000, 'CommitStrip', 'Funny')
+    createTweetSource(9000, 'CommitStrip', 'Funny')
 );
 
 //tweets.subscribe(console.log.bind(console));

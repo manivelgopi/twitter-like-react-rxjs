@@ -11,7 +11,7 @@ export default function DesktopHeader() {
             <div className='desktop-header'>
 
                 <div className='header-logo'>
-                    <NavLink to='/'>
+                    <NavLink to='#'>
                         <FontAwesomeIcon icon={faXTwitter} size='xl' />
                     </NavLink>
                 </div>
@@ -25,7 +25,7 @@ export default function DesktopHeader() {
                                 <span className="link-text">Home</span>
                             </div>
                         </NavLink></li>
-                        <li><NavLink className="header-link-items" to='/explore'>
+                        <li><NavLink className="header-link-items" to='#'>
                             <div className="header-link-icon-wrap">
                                 <span className="link-icon">
                                     <FontAwesomeIcon icon={faMagnifyingGlass} />
@@ -33,7 +33,7 @@ export default function DesktopHeader() {
                                 <span className="link-text">Explore</span>
                             </div>
                         </NavLink></li>
-                        <li><NavLink className="header-link-items" to='/notifications'>
+                        <li><NavLink className="header-link-items" to='#'>
                             <div className="header-link-icon-wrap">
                                 <span className="link-icon">
                                     <FontAwesomeIcon icon={faBell} />
@@ -41,7 +41,7 @@ export default function DesktopHeader() {
                                 <span className="link-text">Notifications</span>
                             </div>
                         </NavLink></li>
-                        <li><NavLink className="header-link-items" to='/messages'>
+                        <li><NavLink className="header-link-items" to='#'>
                             <div className="header-link-icon-wrap">
                                 <span className="link-icon">
                                     <FontAwesomeIcon icon={faEnvelope} />
@@ -49,7 +49,7 @@ export default function DesktopHeader() {
                                 <span className="link-text">Messages</span>
                             </div>
                         </NavLink></li>
-                        <li><NavLink className="header-link-items" to='/lists'>
+                        <li><NavLink className="header-link-items" to='#'>
                             <div className="header-link-icon-wrap">
                                 <span className="link-icon">
                                     <FontAwesomeIcon icon={faBars} />
@@ -57,7 +57,7 @@ export default function DesktopHeader() {
                                 <span className="link-text">Lists</span>
                             </div>
                         </NavLink></li>
-                        <li><NavLink className="header-link-items" to='/verified'>
+                        <li><NavLink className="header-link-items" to='#'>
                             <div className="header-link-icon-wrap">
                                 <span className="link-icon">
                                     <FontAwesomeIcon icon={faCheck} />
@@ -65,7 +65,7 @@ export default function DesktopHeader() {
                                 <span className="link-text">Verified</span>
                             </div>
                         </NavLink></li>
-                        <li><NavLink className="header-link-items" to='/profile'>
+                        <li><NavLink className="header-link-items" to='#'>
                             <div className="header-link-icon-wrap">
                                 <span className="link-icon">
                                     <FontAwesomeIcon icon={faUser} />
@@ -73,7 +73,7 @@ export default function DesktopHeader() {
                                 <span className="link-text">Profile</span>
                             </div>
                         </NavLink></li>
-                        <li><NavLink className="header-link-items" to='/more'>
+                        <li><NavLink className="header-link-items" to='#'>
                             <div className="header-link-icon-wrap">
                                 <span className="link-icon">
                                     <FontAwesomeIcon icon={faEllipsis} />
@@ -82,7 +82,7 @@ export default function DesktopHeader() {
                             </div>
                         </NavLink></li>
 
-                        <li><NavLink className="header-link-items-post" to='/tweet'>
+                        <li><NavLink className="header-link-items-post" to='#'>
                             <div className="header-link-icon-wrap">
                                 <span className="link-text">Post</span>
                             </div>
@@ -90,7 +90,7 @@ export default function DesktopHeader() {
                     </ul>
                     <ul>
                         <li>
-                            <NavLink className="header-link-items-profile" to='/account'>
+                            <NavLink className="header-link-items-profile" to='#'>
                                 <div className="header-link-icon-wrap">
                                     <div className="account-icon">
                                         <FontAwesomeIcon icon={faUser} size='xl' />

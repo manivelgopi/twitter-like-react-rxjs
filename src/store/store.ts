@@ -1,5 +1,4 @@
-import { configureStore } from '@reduxjs/toolkit';
-import { RemoveOldTweetsMiddleware } from './RemoveOldTweetsMiddleware';
+import { configureStore, } from '@reduxjs/toolkit';
 import twitterReducer from './TweetListSlice';
 
 export const store = configureStore({

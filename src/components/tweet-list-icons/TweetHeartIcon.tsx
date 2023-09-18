@@ -12,13 +12,13 @@ export default function TweetHeartIcon(likedData: LikedIcons) {
     const dispatch = useAppDispatch();
 
     const handleHeartTouch = (ev: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-        ev.stopPropagation();
-        // // OR
-        ev.preventDefault();
-
-        console.log('called');
+        // ev.stopPropagation();
+        // // // OR
+        // ev.preventDefault();
 
         if (isLikedIconState.id) {
+            console.log(isLikedIconState.id);
+
             dispatch(likeUpdate(isLikedIconState.id));
         }
         if (isLikedIconState.isLiked === true) {
@@ -33,7 +33,6 @@ export default function TweetHeartIcon(likedData: LikedIcons) {
                 isLiked: true,
                 likedCount: isLikedIconState.likedCount + 1
             })
-
         }
     }
 

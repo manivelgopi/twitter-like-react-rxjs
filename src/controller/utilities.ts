@@ -1,4 +1,6 @@
 import moment from 'moment';
+import { PeopleList, TweetItem } from '../types-interfaces/types';
+
 
 moment.updateLocale('en', {
     relativeTime: {
@@ -21,4 +23,14 @@ moment.updateLocale('en', {
 
 export function dateTimeDifferenc(dateTimestamp: number): string {
     return moment(dateTimestamp).fromNow()
+}
+
+export function removeOlderTweet(tweetArrayList: TweetItem[]): TweetItem[] {
+    const currentTimestamp: number = new Date().getTime();
+    console.log(tweetArrayList);
+
+    return tweetArrayList.filter((tweet) =>
+        (tweet: TweetItem) =>
+            currentTimestamp - tweet.timestamp <= 30000 // 30 seconds in milliseconds
+    )
 }

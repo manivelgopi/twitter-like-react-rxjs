@@ -23,49 +23,49 @@ export default function MobileHeader() {
 
                             </div>
                         </NavLink></li>
-                        <li><NavLink className="header-link-items" to='/explore'>
+                        <li><NavLink className="header-link-items" to='#'>
                             <div className="header-link-icon-wrap">
                                 <span className="link-icon">
                                     <FontAwesomeIcon icon={faMagnifyingGlass} />
                                 </span>
                             </div>
                         </NavLink></li>
-                        <li><NavLink className="header-link-items" to='/notifications'>
+                        <li><NavLink className="header-link-items" to='#'>
                             <div className="header-link-icon-wrap">
                                 <span className="link-icon">
                                     <FontAwesomeIcon icon={faBell} />
                                 </span>
                             </div>
                         </NavLink></li>
-                        <li><NavLink className="header-link-items" to='/messages'>
+                        <li><NavLink className="header-link-items" to='#'>
                             <div className="header-link-icon-wrap">
                                 <span className="link-icon">
                                     <FontAwesomeIcon icon={faEnvelope} />
                                 </span>
                             </div>
                         </NavLink></li>
-                        <li><NavLink className="header-link-items" to='/lists'>
+                        <li><NavLink className="header-link-items" to='#'>
                             <div className="header-link-icon-wrap">
                                 <span className="link-icon">
                                     <FontAwesomeIcon icon={faBars} />
                                 </span>
                             </div>
                         </NavLink></li>
-                        <li><NavLink className="header-link-items" to='/verified'>
+                        <li><NavLink className="header-link-items" to='#'>
                             <div className="header-link-icon-wrap">
                                 <span className="link-icon">
                                     <FontAwesomeIcon icon={faCheck} />
                                 </span>
                             </div>
                         </NavLink></li>
-                        <li><NavLink className="header-link-items" to='/profile'>
+                        <li><NavLink className="header-link-items" to='#'>
                             <div className="header-link-icon-wrap">
                                 <span className="link-icon">
                                     <FontAwesomeIcon icon={faUser} />
                                 </span>
                             </div>
                         </NavLink></li>
-                        <li><NavLink className="header-link-items" to='/more'>
+                        <li><NavLink className="header-link-items" to='#'>
                             <div className="header-link-icon-wrap">
                                 <span className="link-icon">
                                     <FontAwesomeIcon icon={faEllipsis} />
@@ -73,14 +73,14 @@ export default function MobileHeader() {
                             </div>
                         </NavLink></li>
 
-                        <li><NavLink className="header-link-items-post" to='/tweet'>
+                        <li><NavLink className="header-link-items-post" to='#'>
                             <div className="header-link-icon-wrap">
                                 <span className="link-text"><FontAwesomeIcon icon={faTwitter} /></span>
                             </div>
                         </NavLink></li>
                     </ul>
                     <ul>
-                        <li><NavLink className="header-link-items-profile" to='/account'>
+                        <li><NavLink className="header-link-items-profile" to='#'>
                             <div className="header-link-icon-wrap">
                                 <div className="account-icon">
                                     <FontAwesomeIcon icon={faUser} size='xl' />

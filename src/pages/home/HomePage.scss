@@ -70,10 +70,17 @@
                 }
             }
             .tweet-list-refresh-container {
+                display: flex;
+                flex-wrap: nowrap;
+                justify-content: space-around;
+                align-items: center;
                 border-bottom: 1px solid rgb(238, 238, 238);
                 .btn {
                     margin: 0;
                 }
+            }
+            .tweet-list-refresh-container .text-primary.active {
+                border-bottom: 3px solid rgb(29, 155, 240);
             }
 
             .tweet-list-container {

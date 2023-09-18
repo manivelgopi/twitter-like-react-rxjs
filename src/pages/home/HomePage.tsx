@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import TrendContainer from '../../components/trend-container/TrendContainer';
 import TweetCompose from '../../components/tweet-compose/TweetCompose';
 import TweetHomeHeader from '../../components/tweet-header/TweetHomeHeader';
-import TweetListContainer from '../../components/tweet-list-container/TweetListContainer';
+import TweetListContainerStore from '../../components/tweet-list-container/TweetListContainerStore';
 import WhoToFollow from '../../components/who-to-follow/WhoToFollow';
 
 import { dummyTrendDataList } from '../../mockdata';
@@ -22,13 +22,13 @@ export default function Home() {
                         {/* Tweet page top Header and nav button */}
                         <TweetHomeHeader />
 
-                        {Date.now()}
+
                         {/* Tweet compose form */}
                         <TweetCompose />
 
 
                         {/* Tweet message lists */}
-                        <TweetListContainer />
+                        <TweetListContainerStore />
                     </div>
 
                     {/* Search and new container sidebar */}
