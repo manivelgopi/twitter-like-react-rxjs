@@ -1,0 +1,330 @@
+.main-wrapper {
+    width: 990px;
+    .content-wrapper {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: center;
+        .tweet-container {
+            height: 100vh;
+            overflow-y: scroll;
+            width: 60%;
+            display: flex;
+            flex-direction: column;
+            border-right: 1px solid rgb(238, 238, 238);
+            .tweet-container-header {
+                display: flex;
+                flex-direction: column;
+                border-bottom: 1px solid rgb(238, 238, 238);
+                position: -webkit-sticky;
+                position: sticky;
+                top: 0;
+                background-color: white;
+                .page-title {
+                    text-align: left;
+                }
+                .tweet-category-buttons {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-around;
+                    align-items: center;
+                }
+            }
+            .tweet-section-btn.active {
+                border-bottom: 3px solid rgb(29, 155, 240);
+            }
+
+            .tweet-compose {
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-start;
+                align-items: flex-start;
+                padding: 10px 0;
+
+                border-bottom: 1px solid rgb(238, 238, 238);
+                .tweet-compose-profile {
+                    width: 15%;
+                }
+                .tweet-compose-form {
+                    width: 85%;
+                    display: flex;
+                    flex-direction: column;
+                    .tweet-compose-text {
+                        font-size: 1.2rem;
+                    }
+                    .tweet-compose-form-section3 {
+                        padding: 5px;
+                        text-align: start;
+                        font-weight: 600;
+                        color: rgb(29, 155, 240);
+                        border-bottom: 1px solid rgb(238, 238, 238);
+                    }
+                    .tweet-compose-form-icons {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        flex-direction: row;
+                        padding: 0 10px;
+                    }
+                }
+            }
+            .tweet-list-refresh-container {
+                display: flex;
+                flex-wrap: nowrap;
+                justify-content: space-around;
+                align-items: center;
+                border-bottom: 1px solid rgb(238, 238, 238);
+                .btn {
+                    margin: 0;
+                }
+            }
+            .tweet-list-refresh-container .text-primary.active {
+                border-bottom: 3px solid rgb(29, 155, 240);
+            }
+
+            .tweet-list-container {
+                display: flex;
+                flex-direction: column;
+                .tweet-message-card {
+                    display: flex;
+                    flex-direction: row;
+                    border-bottom: 1px solid rgb(238, 238, 238);
+                    .tweet-profile-icon {
+                        padding: 10px;
+                        width: 15%;
+                    }
+                    .tweet-message-container {
+                        display: flex;
+                        flex-direction: column;
+                        padding: 10px 20px 10px 10px;
+                        width: 85%;
+                        .tweet-owner-card {
+                            display: flex;
+                            flex-wrap: nowrap;
+                            justify-content: space-between;
+                            align-items: center;
+
+                            .tweet-owner-id {
+                                .tweet-owner-name {
+                                    padding: 10px 10px 10px 0;
+                                    white-space: nowrap;
+                                    overflow: hidden;
+                                    text-overflow: ellipsis;
+                                    span {
+                                        padding: 5px;
+                                    }
+                                }
+                                .tweet-owner-name:hover {
+                                    text-decoration: underline;
+                                }
+                                .tweet-message-date {
+                                    padding: 5px;
+                                }
+                                .tweet-message-date:hover {
+                                    text-decoration: underline;
+                                }
+                            }
+                        }
+                        .tweet-message-body {
+                            padding: 15px 5px;
+                            text-align: start;
+                            .tweet-msg-media {
+                                padding: 15px 0;
+                            }
+                        }
+                        .tweet-like-share-icons {
+                            padding: 10px;
+                            .tweet-card-icons {
+                                display: flex;
+                                flex-direction: row;
+                                justify-content: space-between;
+                                align-items: center;
+                                .tweet-msg-icon {
+                                    padding: 8px;
+                                }
+                                .tweet-msg-icons span {
+                                    padding-left: 5px;
+                                }
+                            }
+                            .tweet-icon-comment {
+                                .tweet-msg-icon:hover {
+                                    color: rgb(29, 155, 240) !important;
+                                }
+                            }
+
+                            .tweet-icon-retweet {
+                                .tweet-msg-icon:hover {
+                                    color: rgb(0, 186, 124) !important;
+                                }
+                            }
+                            .tweet-icon-heart {
+                                .tweet-msg-icon:hover {
+                                    color: rgb(249, 24, 128) !important;
+                                }
+                            }
+                            .tweet-icon-heart .tweet-msg-icon.liked-icon {
+                                color: rgb(249, 24, 128) !important;
+                            }
+                            .tweet-icon-chart {
+                                .tweet-msg-icon:hover {
+                                    color: rgb(29, 155, 240) !important;
+                                }
+                            }
+                            .tweet-icon-share {
+                                .tweet-msg-icon:hover {
+                                    color: rgb(29, 155, 240) !important;
+                                }
+                            }
+
+                            .tweet-icon-comment:hover {
+                                color: rgb(29, 155, 240) !important;
+                            }
+                            .tweet-icon-retweet:hover {
+                                color: rgb(0, 186, 124) !important;
+                            }
+                            .tweet-icon-heart:hover {
+                                color: rgb(249, 24, 128) !important;
+                            }
+                            .tweet-icon-chart:hover {
+                                color: rgb(29, 155, 240) !important;
+                            }
+                        }
+                    }
+                }
+                .tweet-message-card:hover {
+                    cursor: pointer;
+                    background-color: rgba(0, 0, 0, 0.03);
+                }
+            }
+        }
+
+        .search-news-container {
+            height: 100vh;
+            overflow-y: scroll;
+            width: 40%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .search-header {
+                top: 0;
+                position: sticky;
+                height: 80px;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+                align-items: center;
+                width: 80%;
+                background-color: white;
+                margin-top: 5px;
+                margin-bottom: 15px;
+                .search-icon {
+                    z-index: 2;
+                    margin-right: -50px;
+                }
+                .search-input {
+                    font-size: 1.3rem;
+                    width: 100%;
+                    border: 1px solid rgb(247, 249, 249);
+                    border-radius: 44px;
+                    background-color: rgb(247, 249, 249);
+                    padding: 15px 20px 15px 40px;
+                }
+            }
+            .who-to-follow {
+                background-color: rgb(247, 249, 249);
+                width: 80%;
+                border-radius: 25px;
+                .header-text,
+                .showmore-contact {
+                    text-align: left;
+                    padding: 10px 20px;
+                }
+                .people-suggestion-list {
+                    margin-left: 10px;
+                    margin-right: 10px;
+                    .header-link-items-profile {
+                        .header-link-icon-wrap {
+                            padding: 5px 15px;
+                            display: flex;
+                            flex-direction: row;
+                            border-radius: 40px;
+                            justify-content: space-between;
+                            align-items: center;
+                            .account-icon {
+                                width: 48px;
+                                height: 48px;
+                                border-radius: 50%;
+                                background-color: #999;
+                                text-align: center;
+                                display: inline-flex;
+                                flex-wrap: nowrap;
+                                flex-direction: row;
+                                justify-content: center;
+                                align-items: center;
+                            }
+                            .account-text {
+                                display: inline-flex;
+                                flex-direction: column;
+                                align-items: flex-start;
+
+                                .account-text-primay {
+                                    white-space: nowrap;
+                                    overflow: hidden;
+                                    text-overflow: ellipsis;
+                                    max-width: 144px;
+                                }
+                                .account-text-secondary {
+                                    white-space: nowrap;
+                                    overflow: hidden;
+                                    text-overflow: ellipsis;
+                                    max-width: 144px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .twitter-trends {
+                background-color: rgb(247, 249, 249);
+                width: 80%;
+                margin-top: 15px;
+                border-radius: 25px;
+                .showmore-contact {
+                    text-align: left;
+                    padding: 10px 20px;
+                }
+                .trending-list-card {
+                    text-align: left;
+                    display: flex;
+                    flex-direction: column;
+                    padding: 10px 20px;
+                    .trending-list {
+                        display: inline-flex;
+                        flex-direction: row;
+                        justify-content: space-between;
+                        align-items: center;
+                    }
+                    .hashtag-text {
+                        line-height: 1.5;
+                        font-weight: 600;
+                    }
+                    .trend-order-text,
+                    .noofpost-text {
+                        font-size: small;
+                        color: #536471;
+                    }
+                }
+                .trending-list-card:hover {
+                    cursor: pointer;
+                    background-color: rgba(0, 0, 0, 0.03);
+                }
+                .header-text {
+                    text-align: left;
+                    padding: 10px 20px;
+                }
+            }
+        }
+    }
+}
