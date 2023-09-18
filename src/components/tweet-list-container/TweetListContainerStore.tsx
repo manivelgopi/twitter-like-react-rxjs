@@ -21,25 +21,25 @@ export default function TweetListContainerStore() {
     const [newTweetCount, setNewTweetCount] = useState<number>(0);
     const [isLikedTweet, setIsLikedTweet] = useState<TweetItem[]>([]);
 
-
+    // Refresh or reload to show new post
     const refreshTweetList = () => {
         dispatch(removeOldEvents())
         setDisplayTweet(tweetsListUpdated);
         setNewTweetCount(0);
     };
 
+    // Show all Tweets in the list
     const allLikedTweets = () => {
         setDisplayTweet(isLikedTweet)
     };
 
+    // Delete all Tweets
     const clearAll = () => {
         dispatch(clearAllTweet())
         setDisplayTweet([]);
         setNewTweetCount(0);
         setIsLikedTweet([]);
     };
-
-
 
     // loading Datasource
     const getDatasource = useCallback(() => {
