@@ -26,6 +26,7 @@ export default function TweetCompose() {
         }
     };
 
+    // Submit the tweet via Form submission
     const handlePostTweet = () => {
         if (tweetComposeText) {
             dispatch(
