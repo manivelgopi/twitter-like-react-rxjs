@@ -1,21 +1,25 @@
 # twitter-like-react-rxjs
-Twitter Like application 
+
+Twitter Like application
 
 ## Technologies
-- React.js  V18.x
-- Typescript  V4.x
-- React-router  V6.x
-- Redux  
-- RxJS
-- SCSS
+
+-   React.js V18.x
+-   Typescript V4.x
+-   React-router V6.x
+-   Redux
+-   RxJS
+-   SCSS
 
 ## Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) TS template.
+[Twitter-like App](https://github.com/manivelgopi/twitter-like-react-rxjs)
 
 ## Available Scripts
 
 In the project directory, you can run:
+
+### `yarn install`
 
 ### `yarn start`
 
