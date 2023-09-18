@@ -12,11 +12,14 @@ interface TextAreaProbs {
     onPaste?: () => void;
     onCut?: () => void;
     value?: string;
+    testId: string;
+    placeHolder?: string;
 }
 
 export default function TextArea(props: TextAreaProbs) {
     return (
         <textarea
+            data-testid={props.testId}
             value={props.value}
             onKeyDown={props.onKeyDown}
             onKeyUp={props.onKeyUp}
@@ -25,7 +28,8 @@ export default function TextArea(props: TextAreaProbs) {
             style={props.style}
             {...props.otherProps}
             className={`input input-textarea ${props.className} `}
-            onChange={props.onChange} placeholder='What is happening?!'>
+            onChange={props.onChange}
+            placeholder={props.placeHolder}>
             {props.children}
         </textarea>
 

@@ -48,8 +48,6 @@ export default function TweetCompose() {
         }
     }
 
-
-
     return (
         <>
             {/* Tweet compose form */}
@@ -63,7 +61,7 @@ export default function TweetCompose() {
                     <div className='tweet-compose-form-section1'>
                     </div>
                     <div className='tweet-compose-form-section2'>
-                        <TextArea value={tweetComposeText}
+                        <TextArea placeHolder='What is happening?!' testId="tweet-compose-field" value={tweetComposeText}
                             onChange={(event) => handleTextarea(event)}
                             className={`tweet-compose-text ${isError ? "error" : ""}`}></TextArea>
                     </div>
@@ -90,7 +88,7 @@ export default function TweetCompose() {
                             </IconButton>
                         </div>
                         <div className="tweet-submit-button">
-                            <Button onClick={handlePostTweet} type='button' disabled={isPostBtnDisabled} className='btn-primary btn-sm'>Post</Button>
+                            <Button testId="tweet-compose-button" onClick={handlePostTweet} type='button' disabled={isPostBtnDisabled} className='btn-primary btn-sm'>Post</Button>
                         </div>
 
                     </div>

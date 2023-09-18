@@ -1,5 +1,4 @@
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
-import { saveTweet, tweetsList } from '../store/TweetListSlice';
 import type { AppDispatch, RootState } from '../store/store';
 
 // Use instead of plain `useDispatch` and `useSelector`

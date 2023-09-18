@@ -1,14 +1,19 @@
-import { configureStore, } from '@reduxjs/toolkit';
+import type { PreloadedState } from '@reduxjs/toolkit';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import twitterReducer from './TweetListSlice';
 
-export const store = configureStore({
-  reducer: {
-    twitter: twitterReducer,
-  },
-  // middleware: (getDefaultMiddleware) =>
-  //   getDefaultMiddleware().concat(RemoveOldTweetsMiddleware),
-  devTools: process.env.NODE_ENV !== 'production',
-});
+// Create the root reducer separately so we can extract the RootState type
+const rootReducer = combineReducers({
+  twitter: twitterReducer,
+})
 
-export type AppDispatch = typeof store.dispatch;
-export type RootState = ReturnType<typeof store.getState>;
+export const Store = (preloadedState?: PreloadedState<RootState>) => {
+  return configureStore({
+    reducer: rootReducer,
+    preloadedState
+  })
+}
+
+export type AppDispatch = AppStore['dispatch']
+export type RootState = ReturnType<typeof rootReducer>
+export type AppStore = ReturnType<typeof Store>

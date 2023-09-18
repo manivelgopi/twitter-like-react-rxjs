@@ -9,7 +9,7 @@ export default function Header() {
     const { width: screenWidth } = useWindowsSize();
     return (
         <>
-            <header role="banner" className={`header ${screenWidth > 1266 ? "desktop" : "mobile"} `}>
+            <header data-testid="twitter-header" role="banner" className={`header ${screenWidth > 1266 ? "desktop" : "mobile"} `}>
                 {screenWidth > 1266 ? <DesktopHeader /> : <MobileHeader />}
             </header>
         </>

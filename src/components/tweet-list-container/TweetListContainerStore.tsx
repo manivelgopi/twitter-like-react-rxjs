@@ -4,15 +4,13 @@ import { useCallback, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { tweets } from '../../DataSource';
 import { dateTimeDifferenc } from '../../controller/utilities';
-import TextButton from '../button/TextButton';
-// import { TweetListSelector } from '../../store/TweetListSelector';
 import {
-    // TweetListSelector, 
     useAppDispatch, useAppSelector
 } from '../../custom-hooks/hooks';
 import { clearAllTweet, removeOldEvents, saveTweet } from '../../store/TweetListSlice';
 import { TweetItem } from '../../types-interfaces/types';
 import IconButton from '../button/IconButton';
+import TextButton from '../button/TextButton';
 import TweetListIcons from '../tweet-list-icons/TweetListIcons';
 
 export default function TweetListContainerStore() {
@@ -70,7 +68,6 @@ export default function TweetListContainerStore() {
     useEffect(() => {
         setIsLikedTweet(tweetsListUpdated.filter((tweet) => tweet.isLiked === true));
 
-        console.log("tweetsListUpdated", tweetsListUpdated);
         setNewTweetCount(tweetsListUpdated.length - displayedTweet.length);
     }, [tweetsListUpdated]);
 
@@ -79,7 +76,7 @@ export default function TweetListContainerStore() {
         <>
             {/* Refresh to show new Tweets */}
 
-            <div className='tweet-list-refresh-container'>
+            <div className='tweet-list-refresh-container' data-testid="tweet-list-container">
                 <div>
                     <TextButton type='button'
                         onClick={() => refreshTweetList()}
@@ -88,14 +85,14 @@ export default function TweetListContainerStore() {
                     </TextButton>
                 </div>
                 <div>
-                    <TextButton type='button'
+                    <TextButton testId="tweet-liked-list-button" type='button'
                         onClick={() => allLikedTweets()}
                         className={`text-primary ${isLikedTweet.length > 0 ? "active" : ""} `}>
                         Show {isLikedTweet.length > 0 ? isLikedTweet.length : 0} Liked Tweets
                     </TextButton>
                 </div>
                 <div>
-                    <IconButton onClick={() => clearAll()} type='button' className='bg-grey btn-icon-sm' >
+                    <IconButton testId="tweet-list-delete-button" onClick={() => clearAll()} type='button' className='bg-grey btn-icon-sm' >
                         <FontAwesomeIcon
                             className={` ${newTweetCount > 0 ? "text-primary" : ""} `} icon={faTrash} size='sm' />
                     </IconButton>

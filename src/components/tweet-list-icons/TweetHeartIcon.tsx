@@ -8,16 +8,11 @@ import { LikedIcons } from '../../types-interfaces/types';
 import IconButton from '../button/IconButton';
 
 export default function TweetHeartIcon(likedData: LikedIcons) {
-    // console.log(likedData);
     const dispatch = useAppDispatch();
 
     const handleHeartTouch = (ev: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-        // ev.stopPropagation();
-        // // // OR
-        // ev.preventDefault();
 
         if (isLikedIconState.id) {
-            console.log(isLikedIconState.id);
 
             dispatch(likeUpdate(isLikedIconState.id));
         }
@@ -41,6 +36,7 @@ export default function TweetHeartIcon(likedData: LikedIcons) {
         <>
             <div className="tweet-msg-icons tweet-icon-heart">
                 <IconButton
+                    testId="tweet-heart-button"
                     onClick={(e) => handleHeartTouch(e)}
                     type='button'
                     className={`tweet-msg-icon 

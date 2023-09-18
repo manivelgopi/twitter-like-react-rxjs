@@ -5,11 +5,11 @@ import './scss/App.scss';
 const Home = React.lazy(() => import('./pages/home/HomePage'));
 const Profile = React.lazy(() => import('./pages/profile/ProfilePage'));
 const Layout = React.lazy(() => import('./pages/layout/LayoutPage'));
-// const ErrorPage = React.lazy(() => import('./pages/404'));
+const ErrorPage = React.lazy(() => import('./pages/404'));
 
 export default function App() {
   return (
-    <div className="App">
+    <div className="App" data-testid="twitter-like-app">
       <React.Suspense fallback={<h1>Loading...</h1>}>
         <Routes>
           <Route path="/" element={<Layout />} >
@@ -20,10 +20,10 @@ export default function App() {
             <Route index element={<Profile />} />
           </Route>
 
-          {/* <Route path="*" element={<ErrorPage />} /> */}
-          <Route path="*" element={<Layout />} >
-            <Route element={<Home />} />
-          </Route>
+          <Route path="*" element={<ErrorPage />} />
+          {/* <Route path="*" element={<Layout />} >
+            <Route index element={<ErrorPage />} />
+          </Route> */}
         </Routes>
       </React.Suspense>
 

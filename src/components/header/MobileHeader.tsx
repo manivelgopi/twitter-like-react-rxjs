@@ -7,8 +7,8 @@ import { NavLink } from 'react-router-dom'
 export default function MobileHeader() {
     return (
         <>
-            <div className='mobile-header'>
-                <div className='header-logo'>
+            <div className='mobile-header' data-testid="twitter-mobile-header">
+                <div className='header-logo' data-testid="twitter-brand-logo">
                     <NavLink to='/'>
                         <FontAwesomeIcon icon={faXTwitter} size='xl' />
                     </NavLink>

@@ -9,11 +9,13 @@ interface ButtonProbs {
     className?: string;
     children: string;
     disabled?: boolean;
+    testId?: string;
 }
 
 export default function Button(props: ButtonProbs) {
     return (
         <button
+            data-testid={props.testId}
             disabled={props.disabled}
             type={props.type}
             onClick={props.onClick}

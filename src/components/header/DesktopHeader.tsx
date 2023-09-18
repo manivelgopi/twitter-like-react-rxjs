@@ -8,10 +8,10 @@ import { NavLink } from 'react-router-dom'
 export default function DesktopHeader() {
     return (
         <>
-            <div className='desktop-header'>
+            <div className='desktop-header' data-testid="twitter-desktop-header">
 
                 <div className='header-logo'>
-                    <NavLink to='#'>
+                    <NavLink id="brand-logo" to='/' data-testid="twitter-brand-logo">
                         <FontAwesomeIcon icon={faXTwitter} size='xl' />
                     </NavLink>
                 </div>

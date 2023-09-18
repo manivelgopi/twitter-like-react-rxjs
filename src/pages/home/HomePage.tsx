@@ -13,7 +13,7 @@ export default function Home() {
 
     return (
         <>
-            <div className='main-wrapper'>
+            <div className='main-wrapper' data-testid="twitter-app-home">
                 <div className='content-wrapper'>
 
                     {/* Tweet contanier with compose and tweets list */}

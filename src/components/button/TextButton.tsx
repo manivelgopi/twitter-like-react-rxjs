@@ -8,11 +8,13 @@ interface TextButtonProbs {
     otherProps?: any[];
     className?: string;
     children: string | number | any;
+    testId?: string;
 }
 
 export default function TextButton(props: TextButtonProbs) {
     return (
         <button
+            data-testid={props.testId}
             type={props.type}
             onClick={props.onClick}
             className={`btn btn-text ${props.className} `}
